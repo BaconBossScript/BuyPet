@@ -1,0 +1,37 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "BaconBoss Hub | BUY MY PET 💸", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+_G.segg = "Starter Egg"
+_G.egg = true
+
+function egg()
+      while _G.egg == true do
+        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.5.1"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("EggsService"):WaitForChild("RF"):WaitForChild("Hatch"):InvokeServer(_G.segg,1,{})
+        wait(0.0000001)
+    end
+end
+
+local MainTab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+MainTab:AddToggle({
+	Name = "Auto Hatch",
+	Default = false,
+	Callback = function(Value)
+		_G.egg = Value
+        egg()
+	end    
+})
+
+MainTab:AddDropdown({
+	Name = "Select",
+	Default = "Starter Egg",
+	Options = {"Starter Egg", "Fantasy Egg", "Melon Egg", "Nature Egg"},
+	Callback = function(Value)
+	    _G.segg = Value  
+	end    
+})
+        
